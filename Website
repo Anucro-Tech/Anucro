@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anucro Exacta Duo — Dispense. Cure. Repeat.</title>
+  <meta name="description" content="Anucro Exacta Duo is an all‑in‑one bench‑top system that integrates precision dispensing and UV‑LED curing. Dual‑operator, no pneumatics, plug‑and‑play, under $4,900." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --brand:#1e3a8a; --accent:#22c55e; }
+    body{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    .glass{ backdrop-filter: blur(10px); background: rgba(255,255,255,.1); }
+    .shadow-soft{ box-shadow: 0 10px 30px rgba(2,6,23,.08); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2 font-extrabold tracking-tight text-slate-900">
+        <span class="inline-block w-2.5 h-6 bg-[var(--brand)] rounded"></span>
+        <span>Anucro Exacta Duo</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#features" class="hover:text-[var(--brand)]">Features</a>
+        <a href="#specs" class="hover:text-[var(--brand)]">Specs</a>
+        <a href="#compare" class="hover:text-[var(--brand)]">Compare</a>
+        <a href="#video" class="hover:text-[var(--brand)]">Demo</a>
+        <a href="#contact" class="hover:text-[var(--brand)] font-semibold">Request a Demo</a>
+      </nav>
+      <a href="#contact" class="md:hidden inline-flex items-center px-3 py-1.5 rounded-xl bg-[var(--brand)] text-white text-sm">Demo</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-100 via-white to-teal-100"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight text-slate-900">
+            Dispense. Cure. Repeat.
+          </h1>
+          <p class="mt-4 text-lg text-slate-700 max-w-xl">
+            A complete bench‑top platform that integrates precision dispensing and UV‑LED curing in one compact unit. Dual‑operator. No pneumatics. Plug‑and‑play. Launch price ≈ <span class="font-semibold">$4,900</span>.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#contact" class="px-5 py-3 rounded-2xl bg-[var(--brand)] text-white font-semibold shadow-soft">Request a Demo</a>
+            <a href="#specs" class="px-5 py-3 rounded-2xl bg-white border border-slate-200 text-slate-800 font-semibold shadow-soft">View Specs</a>
+          </div>
+          <div class="mt-6 flex items-center gap-4 text-sm text-slate-600">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span> Maintenance‑free</div>
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span> Dual‑operator</div>
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span> No air required</div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] rounded-3xl bg-white border border-slate-200 shadow-soft grid place-items-center">
+            <div class="text-center p-8">
+              <div class="text-slate-400">Product image placeholder</div>
+              <div class="mt-2 text-xs text-slate-500">Replace this box with a photo of the Anucro Exacta Duo.</div>
+            </div>
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-white border border-slate-200 shadow-soft rounded-2xl p-4 text-sm">
+            <div class="font-semibold">All‑in‑one</div>
+            <div class="text-slate-600">Dispense + UV‑LED cure
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold">Why it’s different</h2>
+        <p class="mt-2 text-slate-600 max-w-2xl">Compared to modular systems from Dymax, LOCTITE, and Nordson, Anucro eliminates separate cure lights, foot pedals, and extra controllers—reducing cost, footprint, and setup time.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-soft">
+          <h3 class="font-semibold">All‑in‑one workflow</h3>
+          <p class="mt-2 text-slate-600">Dispense and cure in a single unit. Arrives ready to run—no add‑ons required.</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-soft">
+          <h3 class="font-semibold">No pneumatics</h3>
+          <p class="mt-2 text-slate-600">Servo‑driven positive displacement. Fewer utilities, fewer failure points.</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-soft">
+          <h3 class="font-semibold">Dual‑operator</h3>
+          <p class="mt-2 text-slate-600">Two independent channels increase throughput without extra footprint.</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-soft">
+          <h3 class="font-semibold">Fast UV‑LED cure</h3>
+          <p class="mt-2 text-slate-600">1–15 s typical at 365 / 385 / 405 nm (capable 365–420 nm).</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-soft">
+          <h3 class="font-semibold">Maintenance‑free</h3>
+          <p class="mt-2 text-slate-600">No air lines or valves. Few moving parts and simple upkeep.</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-soft">
+          <h3 class="font-semibold">Bench‑top footprint</h3>
+          <p class="mt-2 text-slate-600">Lightweight form factor with customizable fixture layout.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section id="specs" class="py-16 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl font-extrabold">Technical Specs</h2>
+      <div class="mt-8 grid md:grid-cols-2 gap-8">
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+          <h3 class="font-semibold">Dispensing</h3>
+          <ul class="mt-3 space-y-2 text-slate-700 list-disc list-inside">
+            <li>Servo‑driven linear actuator (Actuonix L16‑P) with feedback</li>
+            <li>Positive‑displacement control (no shop air)</li>
+            <li>Dual independent channels</li>
+            <li>Sensor feedback via ADS1115</li>
+          </ul>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+          <h3 class="font-semibold">Curing</h3>
+          <ul class="mt-3 space-y-2 text-slate-700 list-disc list-inside">
+            <li>UV‑LED COBs at 365 / 385 / 405 nm (capable 365–420 nm)</li>
+            <li>Typical cure time: 1–15 s</li>
+            <li>Customizable fixturing for optimal light placement</li>
+            <li>PWM dimming control</li>
+          </ul>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+          <h3 class="font-semibold">System</h3>
+          <ul class="mt-3 space-y-2 text-slate-700 list-disc list-inside">
+            <li>Single integrated controller for dispense + cure</li>
+            <li>Maintenance‑free design</li>
+            <li>Bench‑top, lightweight chassis</li>
+            <li>Plug‑and‑play (standard mains power)</li>
+          </ul>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+          <h3 class="font-semibold">Markets</h3>
+          <ul class="mt-3 space-y-2 text-slate-700 list-disc list-inside">
+            <li>Electronics & Medical R&D</li>
+            <li>Pilot lines & small‑batch production</li>
+            <li>High‑mix / low‑volume work cells</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section id="compare" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl font-extrabold">How it compares</h2>
+      <div class="mt-6 grid lg:grid-cols-3 gap-6">
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-soft">
+          <h3 class="font-semibold">Dymax / LOCTITE / Nordson</h3>
+          <ul class="mt-3 space-y-2 text-slate-700 list-disc list-inside">
+            <li>Modular systems (dispense and cure sold separately)</li>
+            <li>Often require pneumatics (air), light guides, foot pedals</li>
+            <li>Higher total cost & integration time</li>
+          </ul>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-soft lg:col-span-2">
+          <h3 class="font-semibold">Anucro Exacta Duo</h3>
+          <ul class="mt-3 space-y-2 text-slate-700 list-disc list-inside">
+            <li>Complete, all‑in‑one bench‑top system</li>
+            <li>No pneumatics; plug‑and‑play</li>
+            <li>Dual‑operator throughput in one frame</li>
+            <li>Launch price ≈ $4,900</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO / DEMO -->
+  <section id="video" class="py-16 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold">See it in action</h2>
+          <p class="mt-3 text-slate-600">Short demo: load → dispense → cure → done. Keep it under 40 seconds. If you don’t have video yet, drop a few photos and add captions.</p>
+          <ul class="mt-4 space-y-2 text-slate-700 list-disc list-inside">
+            <li>Highlight cure time and dual‑operator flow</li>
+            <li>Show bench‑top footprint and plug‑in power</li>
+            <li>End with the finished part</li>
+          </ul>
+        </div>
+        <div class="aspect-video bg-slate-200/60 border border-slate-300 rounded-2xl grid place-items-center">
+          <div class="text-slate-500">Video placeholder (MP4/WebM)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-soft">
+        <h2 class="text-2xl sm:text-3xl font-extrabold">Request a Demo</h2>
+        <p class="mt-2 text-slate-600">Tell us a bit about your application and we’ll get back to you.</p>
+        <form id="demoForm" class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Name</label>
+            <input required name="name" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="Your name" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Email</label>
+            <input required type="email" name="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="you@company.com" />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-medium text-slate-700">Company</label>
+            <input name="company" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="Company or team" />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-medium text-slate-700">Use case</label>
+            <textarea name="usecase" rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="Electronics R&D, medical, small‑batch, etc."></textarea>
+          </div>
+          <div class="sm:col-span-2 flex items-center justify-between gap-3">
+            <button class="px-5 py-3 rounded-2xl bg-[var(--brand)] text-white font-semibold shadow-soft" type="submit">Send Request</button>
+            <p id="formMsg" class="text-sm text-slate-600"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 text-sm text-slate-600">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>© <span id="year"></span> Anucro. All rights reserved.</div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-slate-900">Privacy</a>
+        <a href="#" class="hover:text-slate-900">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Simple form handler (update actionURL to use Formspree or similar) -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const form = document.getElementById('demoForm');
+    const msg = document.getElementById('formMsg');
+
+    // QUICK START: Replace actionURL with your Formspree endpoint to receive emails.
+    const actionURL = https://formspree.io/f/mgvrwylg
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = Object.fromEntries(new FormData(form));
+      if (!actionURL) {
+        msg.textContent = "Form not connected yet. Add your Formspree URL in the code.";
+        msg.className = "text-sm text-amber-600";
+        return;
+      }
+
+      msg.textContent = "Sending...";
+      msg.className = "text-sm text-slate-600";
+
+      try {
+        const res = await fetch(actionURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (res.ok) {
+          form.reset();
+          msg.textContent = "Thanks! We’ll be in touch.";
+          msg.className = "text-sm text-emerald-600";
+        } else {
+          msg.textContent = "Couldn’t send. Try again or email hello@anucro.com.";
+          msg.className = "text-sm text-rose-600";
+        }
+      } catch (err) {
+        msg.textContent = "Network error. Email hello@anucro.com.";
+        msg.className = "text-sm text-rose-600";
+      }
+    });
+  </script>
+</body>
+</html>
