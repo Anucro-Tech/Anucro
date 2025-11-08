@@ -118,10 +118,10 @@
         <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
           <h3 class="font-semibold">Dispensing</h3>
           <ul class="mt-3 space-y-2 text-slate-700 list-disc list-inside">
-            <li>Servo‑driven linear actuator (Actuonix L16‑P) with feedback</li>
+            <li>Servo‑driven linear actuator with feedback</li>
             <li>Positive‑displacement control (no shop air)</li>
             <li>Dual independent channels</li>
-            <li>Sensor feedback via ADS1115</li>
+            <li>Sensor feedback</li>
           </ul>
         </div>
         <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
@@ -163,7 +163,7 @@
           <h3 class="font-semibold">Dymax / LOCTITE / Nordson</h3>
           <ul class="mt-3 space-y-2 text-slate-700 list-disc list-inside">
             <li>Modular systems (dispense and cure sold separately)</li>
-            <li>Often require pneumatics (air), light guides, foot pedals</li>
+            <li>Requires pneumatics (air), light guides, foot pedals</li>
             <li>Higher total cost & integration time</li>
           </ul>
         </div>
@@ -245,46 +245,46 @@
 
   <!-- Simple form handler (update actionURL to use Formspree or similar) -->
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    const form = document.getElementById('demoForm');
-    const msg = document.getElementById('formMsg');
+  const form = document.getElementById('demoForm');
+  const msg  = document.getElementById('formMsg');
 
-    // QUICK START: Replace actionURL with your Formspree endpoint to receive emails.
-    const actionURL = https://formspree.io/f/mgvrwylg
+  // Your live Formspree endpoint:
+  const actionURL = "https://formspree.io/f/mgvrwylyg";
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-      const data = Object.fromEntries(new FormData(form));
-      if (!actionURL) {
-        msg.textContent = "Form not connected yet. Add your Formspree URL in the code.";
-        msg.className = "text-sm text-amber-600";
-        return;
-      }
+    const data = Object.fromEntries(new FormData(form));
 
-      msg.textContent = "Sending...";
-      msg.className = "text-sm text-slate-600";
+    msg.textContent = "Sending...";
+    msg.className = "text-sm text-slate-600";
 
-      try {
-        const res = await fetch(actionURL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        if (res.ok) {
-          form.reset();
-          msg.textContent = "Thanks! We’ll be in touch.";
-          msg.className = "text-sm text-emerald-600";
-        } else {
-          msg.textContent = "Couldn’t send. Try again or email hello@anucro.com.";
-          msg.className = "text-sm text-rose-600";
-        }
-      } catch (err) {
-        msg.textContent = "Network error. Email hello@anucro.com.";
+    try {
+      const res = await fetch(actionURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'   // required by Formspree for JSON
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        form.reset();
+        msg.textContent = "Thanks! We’ll be in touch.";
+        msg.className = "text-sm text-emerald-600";
+      } else {
+        const err = await res.json().catch(() => ({}));
+        msg.textContent = err?.errors?.[0]?.message || "Couldn’t send. Try again or email admin@anucro.com.";
         msg.className = "text-sm text-rose-600";
       }
-    });
-  </script>
+    } catch {
+      msg.textContent = "Network error. Email admin@anucro.com.";
+      msg.className = "text-sm text-rose-600";
+    }
+  });
+</script>
 </body>
 </html>
