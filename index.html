@@ -206,80 +206,70 @@
       <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-soft">
         <h2 class="text-2xl sm:text-3xl font-extrabold">Request a Demo</h2>
         <p class="mt-2 text-slate-600">Tell us a bit about your application and we’ll get back to you.</p>
-          <form id="demoForm"
-      action="https://formspree.io/f/mgvrwylyg"
+<form id="demoForm"
+      action="https://api.web3forms.com/submit"
       method="POST"
       class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-medium text-slate-700">Name</label>
-            <input required name="name" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="Your name" />
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-slate-700">Email</label>
-            <input required type="email" name="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="you@company.com" />
-          </div>
-          <div class="sm:col-span-2">
-            <label class="block text-sm font-medium text-slate-700">Company</label>
-            <input name="company" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="Company or team" />
-          </div>
-          <div class="sm:col-span-2">
-            <label class="block text-sm font-medium text-slate-700">Use case</label>
-            <textarea name="usecase" rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="Electronics R&D, medical, small‑batch, etc."></textarea>
-          </div>
-          <div class="sm:col-span-2 flex items-center justify-between gap-3">
-            <button class="px-5 py-3 rounded-2xl bg-[var(--brand)] text-white font-semibold shadow-soft" type="submit">Send Request</button>
-            <p id="formMsg" class="text-sm text-slate-600"></p>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="py-10 text-sm text-slate-600">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>© <span id="year"></span> Anucro. All rights reserved.</div>
-      <div class="flex items-center gap-4">
-        <a href="#" class="hover:text-slate-900">Privacy</a>
-        <a href="#" class="hover:text-slate-900">Terms</a>
-      </div>
-    </div>
-  </footer>
+  <!-- 🔹 Web3Forms hidden keys -->
+  <input type="hidden" name="access_key" value="137e4aaf-e723-4bee-8405-6022ecd8b23b">
+  <input type="hidden" name="subject" value="New Demo Request from anucro.com">
+  <input type="hidden" name="from_name" value="Anucro Exacta Website">
 
-  <!-- Simple form handler (update actionURL to use Formspree or similar) -->
+  <div>
+    <label class="block text-sm font-medium text-slate-700">Name</label>
+    <input required name="name" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="Your name" />
+  </div>
+  <div>
+    <label class="block text-sm font-medium text-slate-700">Email</label>
+    <input required type="email" name="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="you@company.com" />
+  </div>
+  <div class="sm:col-span-2">
+    <label class="block text-sm font-medium text-slate-700">Company</label>
+    <input name="company" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="Company or team" />
+  </div>
+  <div class="sm:col-span-2">
+    <label class="block text-sm font-medium text-slate-700">Use case</label>
+    <textarea name="usecase" rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="Electronics R&D, medical, small-batch, etc."></textarea>
+  </div>
+  <div class="sm:col-span-2 flex items-center justify-between gap-3">
+    <button class="px-5 py-3 rounded-2xl bg-[var(--brand)] text-white font-semibold shadow-soft" type="submit">Send Request</button>
+    <p id="formMsg" class="text-sm text-slate-600"></p>
+  </div>
+</form>
+
+<!-- JS handler for inline confirmation -->
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
   const form = document.getElementById('demoForm');
-  const msg  = document.getElementById('formMsg');
-
-  // Your live Formspree endpoint
-  const actionURL = "https://formspree.io/f/mgvrwylyg";
+  const msg = document.getElementById('formMsg');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     msg.textContent = "Sending...";
     msg.className = "text-sm text-slate-600";
 
+    const formData = new FormData(form);
+
     try {
-      const res = await fetch(actionURL, {
+      const res = await fetch(form.action, {
         method: 'POST',
-        // Let the browser set multipart boundaries for FormData:
-        // DO NOT set 'Content-Type' manually here.
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
+        body: formData
       });
+
+      const json = await res.json();
 
       if (res.ok) {
         form.reset();
         msg.textContent = "Thanks! We’ll be in touch.";
         msg.className = "text-sm text-emerald-600";
       } else {
-        const err = await res.json().catch(() => ({}));
-        msg.textContent = err?.errors?.[0]?.message || "Couldn’t send. Try again or email admin@anucro.com.";
+        msg.textContent = json.message || "Couldn’t send. Try again or email admin@anucro.com.";
         msg.className = "text-sm text-rose-600";
       }
-    } catch {
+    } catch (err) {
       msg.textContent = "Network error. Email admin@anucro.com.";
       msg.className = "text-sm text-rose-600";
     }
