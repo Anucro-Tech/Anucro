@@ -206,7 +206,10 @@
       <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-soft">
         <h2 class="text-2xl sm:text-3xl font-extrabold">Request a Demo</h2>
         <p class="mt-2 text-slate-600">Tell us a bit about your application and we’ll get back to you.</p>
-        <form id="demoForm" class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <form id="demoForm"
+      action="https://formspree.io/f/mgvrwylyg"
+      method="POST"
+      class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-medium text-slate-700">Name</label>
             <input required name="name" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]" placeholder="Your name" />
@@ -244,31 +247,27 @@
   </footer>
 
   <!-- Simple form handler (update actionURL to use Formspree or similar) -->
-  <script>
+<script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
   const form = document.getElementById('demoForm');
   const msg  = document.getElementById('formMsg');
 
-  // Your live Formspree endpoint:
+  // Your live Formspree endpoint
   const actionURL = "https://formspree.io/f/mgvrwylyg";
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const data = Object.fromEntries(new FormData(form));
-
     msg.textContent = "Sending...";
     msg.className = "text-sm text-slate-600";
 
     try {
       const res = await fetch(actionURL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'   // required by Formspree for JSON
-        },
-        body: JSON.stringify(data)
+        // Let the browser set multipart boundaries for FormData:
+        // DO NOT set 'Content-Type' manually here.
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
       });
 
       if (res.ok) {
