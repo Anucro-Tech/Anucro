@@ -14,6 +14,12 @@
     body{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
     .glass{ backdrop-filter: blur(10px); background: rgba(255,255,255,.1); }
     .shadow-soft{ box-shadow: 0 10px 30px rgba(2,6,23,.08); }
+    @keyframes pop {
+  0% { transform: scale(.9); opacity: 0; }
+  60% { transform: scale(1.03); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.pop-in { animation: pop .35s ease-out both; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -206,10 +212,7 @@
       <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-soft">
         <h2 class="text-2xl sm:text-3xl font-extrabold">Request a Demo</h2>
         <p class="mt-2 text-slate-600">Tell us a bit about your application and we’ll get back to you.</p>
-<form id="demoForm"
-      action="https://api.web3forms.com/submit"
-      method="POST"
-      class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<form id="demoForm" class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
 
   <!-- 🔹 Web3Forms hidden keys -->
   <input type="hidden" name="access_key" value="137e4aaf-e723-4bee-8405-6022ecd8b23b">
@@ -243,35 +246,48 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 
   const form = document.getElementById('demoForm');
-  const msg = document.getElementById('formMsg');
+  const msg  = document.getElementById('formMsg');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  const WEB3_ENDPOINT = "https://api.web3forms.com/submit";
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    // UI: sending state
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-60', 'cursor-not-allowed');
     msg.textContent = "Sending...";
     msg.className = "text-sm text-slate-600";
 
-    const formData = new FormData(form);
-
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch(WEB3_ENDPOINT, {
         method: 'POST',
-        body: formData
+        body: new FormData(form)  // includes your hidden access_key + fields
       });
 
-      const json = await res.json();
+      const json = await res.json().catch(() => ({}));
 
       if (res.ok) {
         form.reset();
-        msg.textContent = "Thanks! We’ll be in touch.";
+        msg.innerHTML = `
+          <span class="inline-flex items-center gap-2 pop-in">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M20 6L9 17l-5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Thanks! We’ll be in touch.
+          </span>`;
         msg.className = "text-sm text-emerald-600";
       } else {
-        msg.textContent = json.message || "Couldn’t send. Try again or email admin@anucro.com.";
+        msg.textContent = json?.message || "Couldn’t send. Try again or email admin@anucro.com.";
         msg.className = "text-sm text-rose-600";
       }
     } catch (err) {
       msg.textContent = "Network error. Email admin@anucro.com.";
       msg.className = "text-sm text-rose-600";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('opacity-60', 'cursor-not-allowed');
     }
   });
 </script>
