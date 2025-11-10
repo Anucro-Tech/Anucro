@@ -66,10 +66,8 @@
         <div class="relative">
 <!-- HERO IMAGE CAROUSEL -->
 <div id="heroCarousel"
-     class="aspect-[4/3] rounded-3xl bg-white border border-slate-200 shadow-soft
-            overflow-hidden relative hero-carousel">
-  <!-- Images you uploaded to /images/ -->
-  <img src="images/photo1.jpg" alt="Anucro Exacta Duo — angle 1" loading="eager">
+     class="rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden hero-carousel">
+  <img src="images/photo1.jpg" alt="Anucro Exacta Duo — angle 1" class="is-active" loading="eager">
   <img src="images/photo2.jpg" alt="Anucro Exacta Duo — angle 2" loading="lazy">
   <img src="images/photo3.png" alt="Anucro Exacta Duo — detail" loading="lazy">
 </div>
@@ -305,24 +303,24 @@
         submitBtn.classList.remove('opacity-60','cursor-not-allowed');
       }
     });
-    // === HERO CAROUSEL (simple fade loop) ===
-(function(){
+// === HERO CAROUSEL (fade) ===
+document.addEventListener('DOMContentLoaded', () => {
   const wrap = document.getElementById('heroCarousel');
   if (!wrap) return;
-  const imgs = wrap.querySelectorAll('img');
-  if (!imgs.length) return;
+  const imgs = Array.from(wrap.querySelectorAll('img'));
+  if (imgs.length === 0) return;
 
-  // show first image immediately
+  // Ensure first image is visible even if classes were stripped
+  imgs.forEach((im, idx) => im.classList.toggle('is-active', idx === 0));
+
   let i = 0;
-  imgs[0].classList.add('is-active');
-
-  // rotate every 4 seconds
   setInterval(() => {
     imgs[i].classList.remove('is-active');
     i = (i + 1) % imgs.length;
     imgs[i].classList.add('is-active');
   }, 4000);
-})();
+});
+
   </script>
 </body>
 </html>
