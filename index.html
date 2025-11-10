@@ -24,6 +24,11 @@
   opacity:0; transition:opacity .6s ease;
 }
 .hero-carousel img.is-active{ opacity:1; }
+    /* Keep tall images (like photo3.png) from being cropped */
+.hero-carousel img.contain{
+  object-fit: contain;      /* show the whole image */
+  background: #000;         /* letterbox fill that matches your hero bg */
+}
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -69,7 +74,7 @@
      class="relative aspect-[4/3] min-h-[240px] rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden hero-carousel">
   <img src="images/photo1.jpg" alt="Anucro Exacta Duo — angle 1" class="is-active" loading="eager">
   <img src="images/photo2.jpg" alt="Anucro Exacta Duo — angle 2" loading="lazy">
-  <img src="images/photo3.png" alt="Anucro Exacta Duo — detail" loading="lazy">
+<img src="images/photo3.png" alt="Anucro Exacta Duo — detail" loading="lazy" class="contain">
 </div>
           <div class="absolute -bottom-6 -left-6 bg-white border border-slate-200 shadow-soft rounded-2xl p-4 text-sm">
             <div class="font-semibold">All‑in‑one</div>
