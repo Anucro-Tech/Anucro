@@ -70,17 +70,19 @@
     .application-link { display:inline-flex; margin-top:25px; color:#126696; font-size:14px; font-weight:600; text-decoration:underline; text-underline-offset:5px; }
     .workflow-section { padding:88px 5%; background:#fff; }
     .section-inner { max-width:1296px; margin:auto; }
-    .workflow-heading { display:flex; justify-content:space-between; gap:60px; align-items:end; }
+    .workflow-heading { display:flex; justify-content:space-between; gap:60px; align-items:center; }
     .workflow-heading .application-heading { max-width:650px; }
-    .workflow-heading p { max-width:365px; color:#4a5a65; line-height:1.85; font-size:15px; margin:0 0 4px; }
-    .workflow-steps { list-style:none; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:40px; padding:0; margin:46px 0 0; }
+    .workflow-heading p { max-width:465px; color:#344c5c; line-height:1.75; font-size:20px; margin:0; }
+    .workflow-heading h2 span { color:#087fbd; }
+    .workflow-options { display:flex; flex-wrap:wrap; gap:10px; margin:28px 0 0; }
+    .workflow-options span { background:#eaf6fd; border:1px solid #c1e4f7; border-radius:4px; color:#105f8b; padding:10px 16px; font-size:13px; font-weight:600; }
+    .workflow-sequence-title { margin:42px 0 0; padding-top:30px; border-top:1px solid #d4dce1; font-size:20px; color:#17232c; font-weight:600; letter-spacing:-.02em; }
+    .workflow-steps { list-style:none; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:32px; padding:0; margin:26px 0 0; }
     .workflow-steps li { border-top:1px solid #cdd5da; padding-top:22px; }
     .workflow-step-top { display:flex; align-items:center; justify-content:space-between; color:#126696; font-size:12px; letter-spacing:.06em; }
     .workflow-step-top svg { width:30px; height:30px; fill:none; stroke:#126696; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
     .workflow-steps h3 { font-size:24px; letter-spacing:-.035em; color:#17232c; font-weight:600; margin:22px 0 12px; }
     .workflow-steps p { color:#4a5a65; line-height:1.85; font-size:14px; margin:0; max-width:350px; }
-    .workflow-note { border-top:1px solid #e0e5e8; margin:36px 0 0; padding-top:20px; color:#53636d; font-size:13px; line-height:1.8; }
-    .workflow-note strong { color:#17232c; font-weight:500; }
     .controls-section { background:#11191f; color:#edf3f7; padding:85px 5%; }
     .controls-section .section-kicker { color:#63c3ff; }
     .controls-section .application-heading { color:#f3f7fa; max-width:800px; }
@@ -92,21 +94,33 @@
     .control-feature { border-top:1px solid #34424c; padding:18px 0; }
     .control-feature dt { color:#f3f7fa; font-size:17px; font-weight:500; letter-spacing:-.01em; }
     .control-feature dd { color:#bfccd5; font-size:14px; line-height:1.85; margin:8px 0 0; }
+    .dispensing-panel { margin-top:42px; padding-top:30px; border-top:1px solid #34424c; }
+    .dispensing-panel h3 { margin:0; font-size:25px; font-weight:600; letter-spacing:-.025em; }
+    .dispensing-modes { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px; margin:24px 0 0; }
+    .dispensing-mode { padding:22px; border:1px solid #344b5a; border-radius:4px; background:#17252f; min-width:0; }
+    .dispensing-mode h4 { margin:0 0 12px; font-size:16px; font-weight:600; color:#72caff; line-height:1.5; }
+    .dispensing-mode p { margin:0; font-size:14px; line-height:1.8; color:#bfccd5; }
     .controls-footnote { margin:24px 0 0; padding-top:20px; border-top:1px solid #34424c; font-size:12px; line-height:1.8; color:#b0bec8; }
     @media(max-width:1000px) {
       .workflow-heading { gap:30px; }
-      .workflow-heading p { max-width:280px; }
-      .workflow-steps { gap:24px; }
+      .workflow-heading p { max-width:360px; font-size:18px; }
+      .workflow-steps { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; }
       .controls-layout { grid-template-columns:1fr 1fr; gap:32px; }
+      .dispensing-modes { grid-template-columns:1fr 1fr; }
     }
     @media(max-width:680px) {
       .workflow-section, .controls-section { padding:55px 6%; }
       .workflow-heading { display:block; }
       .workflow-heading p { margin-top:22px; max-width:none; }
+      .workflow-options { gap:8px; margin-top:22px; }
+      .workflow-options span { padding:8px 11px; font-size:12px; }
+      .workflow-sequence-title { margin-top:30px; padding-top:24px; }
       .workflow-steps { grid-template-columns:1fr; gap:28px; margin-top:30px; }
       .workflow-steps h3 { margin-top:14px; }
       .workflow-steps p { max-width:none; }
       .controls-layout { grid-template-columns:1fr; gap:30px; margin-top:28px; }
+      .dispensing-modes { grid-template-columns:1fr; gap:14px; }
+      .dispensing-panel { margin-top:28px; }
     }
     .specs-section { background:#fff; padding:88px 5%; }
     .specs-layout { display:grid; grid-template-columns:.85fr 1.15fr; gap:76px; align-items:start; margin-top:40px; }
@@ -308,47 +322,61 @@
     <div class="section-inner">
       <p class="section-kicker">At the workbench</p>
       <div class="workflow-heading">
-        <h2 id="workflow-title" class="application-heading">From recipe to assembly.</h2>
-        <p>Keep dispensing and curing together, with independent settings for each operator station.</p>
+        <h2 id="workflow-title" class="application-heading">Use dispensing,<br>curing, <span>or both.</span></h2>
+        <p>Each station can run the same recipe or a different one, so two operators can work on separate assembly tasks <strong>at the same time.</strong></p>
       </div>
+      <div class="workflow-options" aria-label="Independent station workflows"><span>Dispense only</span><span>Cure only</span><span>Dispense + cure</span></div>
+      <h3 class="workflow-sequence-title">From recipe to assembly.</h3>
       <ol class="workflow-steps">
         <li>
           <div class="workflow-step-top"><span>01 / SET UP</span><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="5" width="24" height="17" rx="2"/><path d="M12 27h8M16 22v5M9 11h14M9 16h8"/></svg></div>
           <h3>Select your recipe.</h3>
-          <p>Choose the saved recipe for the job. For dispensing, use the guided cartridge setup to prepare the station.</p>
+          <p>Choose the saved recipe for the job and bring your process settings to the station.</p>
         </li>
         <li>
           <div class="workflow-step-top"><span>02 / DISPENSE</span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 4h12M16 4v5M11 9h10v12l-5 6-5-6ZM16 27v3M11 14h5M11 18h5"/></svg></div>
           <h3>Press the pedal.</h3>
-          <p>Trigger the programmed dispense while handling the part. Set anti-drip retraction in the recipe, or use Manual mode for pedal-controlled dispensing.</p>
+          <p>Trigger the programmed dispense with the foot pedal, keeping your hands free to position the part and apply adhesive.</p>
         </li>
         <li>
           <div class="workflow-step-top"><span>03 / CURE</span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 9v19h22V9M11 9v12h10V9M10 4l2 3M16 3v4M22 4l-2 3M14 13l-1 3M18 13l1 3"/></svg></div>
           <h3>Position and cure.</h3>
           <p>Place the bond area in the curing cup. Start the configured UV exposure using the part sensor or foot switch, according to the selected workflow.</p>
         </li>
+        <li>
+          <div class="workflow-step-top"><span>04 / REPEAT!</span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M26 12A11 11 0 0 0 7 8L4 12M4 5v7h7M6 20a11 11 0 0 0 19 4l3-4M28 27v-7h-7"/></svg></div>
+          <h3>On to the next part.</h3>
+          <p>Keep the assembly moving. Each operator works through the next part using their station’s selected recipe.</p>
+        </li>
       </ol>
-      <p class="workflow-note"><strong>Use dispensing, curing, or both.</strong> Each station can run the same recipe or a different one, so two operators can work on separate assembly tasks.</p>
     </div>
   </section>
 
   <section id="controls" class="controls-section" aria-labelledby="controls-title">
     <div class="section-inner">
-      <p class="section-kicker">Touchscreen operation</p>
+      <p class="section-kicker">Process control</p>
       <h2 id="controls-title" class="application-heading">Set the process.<br>Keep it within reach.</h2>
       <div class="controls-layout">
         <figure class="controls-photo">
           <img src="images/exacta-duo-lab-display.jpg" width="2048" height="1536" loading="lazy" alt="Exacta Duo with two dispensing stands and curing cups on a lab bench, with its touchscreen menu mirrored on an external monitor.">
-          <figcaption>Exacta Duo during an engineering demonstration. An external monitor mirrors the built-in touchscreen for shared viewing and training.</figcaption>
+          <figcaption>Exacta Duo during an engineering demonstration.</figcaption>
         </figure>
         <div>
           <dl class="controls-list">
-            <div class="control-feature"><dt>Saved recipes &amp; guided setup</dt><dd>Bring dispensing and curing settings together in a recipe. On-screen cartridge setup guides the operator through preparing the station.</dd></div>
-            <div class="control-feature"><dt>Timing adjustments &amp; Manual operation</dt><dd>Adjust dispense time within the recipe’s defined range while running. For hands-on work, Manual mode offers adjustable speed and anti-drip settings.</dd></div>
+            <div class="control-feature"><dt>Saved recipes</dt><dd>Bring dispensing and curing settings together in a recipe, ready to recall for the next run.</dd></div>
             <div class="control-feature"><dt>Calibration &amp; lot history</dt><dd>Save radiometer readings for estimated irradiance at different power settings. Review recorded run information in the lot history.</dd></div>
             <div class="control-feature"><dt>Training at the station</dt><dd>Assign a training video to a recipe so operators can review the procedure where the work happens.</dd></div>
           </dl>
           <p class="controls-footnote">Password access protects Engineering and recipe editing. Irradiance estimates use saved calibration data; they are not live optical measurements.</p>
+        </div>
+      </div>
+      <div class="dispensing-panel" aria-labelledby="dispensing-modes-title">
+        <h3 id="dispensing-modes-title">Multiple dispensing modes</h3>
+        <div class="dispensing-modes">
+          <div class="dispensing-mode"><h4>Fixed</h4><p>Set the dispense time and run. Use the same programmed duration for each cycle.</p></div>
+          <div class="dispensing-mode"><h4>Adjustable</h4><p>Set a starting dispense time, then adjust it on the fly as your process requires.</p></div>
+          <div class="dispensing-mode"><h4>Calibrated interpolation</h4><p>Calibrate an adhesive bottle and save its profile in the library. Exacta Duo uses that profile to adjust dispensing during the run, helping keep deposits consistent from part to part.</p></div>
+          <div class="dispensing-mode"><h4>Manual</h4><p>Dispense and cure on demand, with adjustments as you work. For the moments when R&amp;D can’t wait.</p></div>
         </div>
       </div>
     </div>
@@ -379,7 +407,7 @@
         </div>
         <figure class="application-story">
           <img src="images/exacta-duo-5ml-adapter.jpg" width="1152" height="2048" loading="lazy" alt="A small syringe barrel fitted to the Exacta Duo dispensing stand using a custom adapter.">
-          <figcaption><strong>From a conversation to a fitted adapter in under 24 hours.</strong> A recent engineering demonstration brought us a 5 mL syringe barrel. We made a custom adapter and fitted it to the existing dispensing mechanism.</figcaption>
+          <figcaption><strong>From a conversation to a fitted adapter in under 24 hours.</strong></figcaption>
         </figure>
       </div>
       <div id="demonstration" class="demo-story">
@@ -415,7 +443,7 @@
               <tr><th scope="row">Dispensing</th><td>Electrically driven, positive-displacement dispensing with position feedback</td></tr>
               <tr><th scope="row">Cartridges</th><td>Standard 10 mL and 30 mL setups; custom adapters and saved cartridge profiles for other barrels</td></tr>
               <tr><th scope="row">UV curing</th><td>365 nm and 405 nm cup configurations; adjustable exposure time and LED power</td></tr>
-              <tr><th scope="row">Operation</th><td>Saved recipes, adjustable timing, and Manual dispensing; sensor- or pedal-triggered curing</td></tr>
+              <tr><th scope="row">Operation</th><td>Fixed, Adjustable, Calibrated Interpolation, and Manual modes; sensor- or pedal-triggered curing</td></tr>
               <tr><th scope="row">Interface</th><td>Built-in touchscreen with external display mirroring</td></tr>
               <tr><th scope="row">Records &amp; guidance</th><td>Saved calibration data, lot history, and recipe-linked training videos</td></tr>
               <tr><th scope="row">Utilities</th><td>Electrical power; no compressed-air supply required</td></tr>
